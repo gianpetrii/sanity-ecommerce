@@ -1,9 +1,19 @@
+// React
 import React from 'react'
+
+// sections
+
+// components
+import HeroBanner from '../components/HeroBanner/HeroBanner.jsx';
+import Product from '../components/Product/Product.jsx';
+import FooterBanner from '../components/FooterBanner/FooterBanner.jsx';
+
+
 
 const index = () => {
   return (
     <>
-      HeadBanner
+      <HeroBanner />
 
       <div className='products-heading'>
         <h2>Best Selling Products</h2>
@@ -16,7 +26,7 @@ const index = () => {
         )}
       </div>
 
-      Footer
+      <FooterBanner />
     </>
   )
 }
