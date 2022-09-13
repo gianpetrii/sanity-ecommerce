@@ -1,3 +1,4 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [ "next/babel", "next/core-web-vitals"]
 }
+// no longer needs "next/babel" and .babelrc file but just in case leave it
