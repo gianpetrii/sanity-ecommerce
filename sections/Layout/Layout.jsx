@@ -1,9 +1,38 @@
-import React from 'react'
+// react
+import React from 'react';
 
-const Layout = () => {
+// next
+import Head from 'next/head';
+
+// components
+import Navbar from '../../components/Navbar/Navbar.jsx';
+import Footer from '../Footer/Footer.jsx';
+
+
+
+
+const Layout = ({ children }) => {
   return (
-    <div>Layout</div>
+    <div className='layout'>
+      
+      <Head>
+        <title>Sanitary Ecommerce Project</title>
+      </Head>
+
+      <header>
+        <Navbar />
+      </header>
+
+      <main className='main-container'>
+      { children }
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
+
+    </div>
   )
 }
 
-export default Layout
+export default Layout;
