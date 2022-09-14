@@ -5,7 +5,7 @@ import React from 'react';
 import Head from 'next/head';
 
 // components
-import Navbar from '../../components/Navbar/Navbar.jsx';
+import Navbar from '../Navbar/Navbar.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 
