@@ -37,6 +37,7 @@ next-env.d.ts
 
 #configuration
 package-lock.json
+.env
 
 #copio lo que esta en el package.json del github original y corro npm install --legacy-peer-deps
 #para que instale todo cpn las mismas versiones que las del video
