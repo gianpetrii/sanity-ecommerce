@@ -15,7 +15,6 @@ import { client } from '../lib/client.js';
 
 const Home = ({products, banners}) => {
 
-  const array = ["2", "1"];
   return (
     <>
 
@@ -34,7 +33,7 @@ const Home = ({products, banners}) => {
 
       <div className='products-container'>
         {products?.map(
-          product => product.name
+          product => <Product key={product._id} product={product} />
         )}
       </div>
 

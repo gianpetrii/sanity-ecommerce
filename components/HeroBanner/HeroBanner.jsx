@@ -4,7 +4,7 @@ import React from 'react'
 // dependencies
 import Link from 'next/link';
 
-// properties
+// functions
 import { urlFor } from '../../lib/client';
 
 
