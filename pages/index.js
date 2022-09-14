@@ -37,7 +37,7 @@ const Home = ({products, banners}) => {
         )}
       </div>
 
-      <FooterBanner />
+      <FooterBanner footerBanner={banners && banners[0]}/>
     </>
   )
 };
