@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 // dependencies 
-import { toast } from 'react-hot-toast';
+import { toast, ToastBar } from 'react-hot-toast';
 
 
 
@@ -13,7 +13,7 @@ export const StateContext = ({ children }) => {
    
    // first create all the states
    const [showCart, setShowCart] = useState(false);
-   const [ cartItems, setCartItems] = useState();
+   const [ cartItems, setCartItems] = useState([]);
    const [totalPrice, setTotalPrice] = useState();
    const [totalQuantities, setTotalQuantities] = useState();
    const [ qty, setQty] = useState(1);
@@ -33,13 +33,51 @@ export const StateContext = ({ children }) => {
       });
    };
 
+   // adds product to cart or adds 1 to quantity of product
+   const onAdd = (product, quantity) => {
+
+      // checks if product is already in cart
+      const checkProductInCart = cartItems.find(item => {
+         item._id == product._id
+      })
+
+      setTotalPrice(prevTotalPrice => prevTotalPrice + product.price * quantity);
+      setTotalQuantities(prevTotalQuantities => prevTotalQuantities + quantity);
+
+      // if it is then update quantity
+      if (checkProductInCart) {
+
+
+         const updatedCartItems = cartItems.map(cartProduct => {
+            if(cartProduct._id == product._id) {
+               return {
+                  ...cartProduct,
+                  quantity: cartProduct.quantity + quantity
+               }
+            }
+         })
+
+         setCartItems(updatedCartItems);
+         toast.success(`${qty} was added to the cart`);
+
+
+      } else { // if product is not already in cart
+         
+         product.quantity = quantity;
+
+         setCartItems([...cartItems, {...product }])
+         toast.success(`${product.name} was added to the cart`);
+      }
+
+   }
+
 
    return (
       // not rendering anything, just wrapping all with context prov to pass state 
       <Context.Provider 
          value={{
             showCart, cartItems, totalPrice, totalQuantities, qty,
-            incQty, decQty
+            incQty, decQty, onAdd
       }}>
          { children }
       </Context.Provider>
