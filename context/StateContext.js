@@ -45,3 +45,8 @@ export const StateContext = ({ children }) => {
       </Context.Provider>
    )
 };
+
+
+
+// allows us to use state like a hook
+export const useStateContext = () => useContext(Context);

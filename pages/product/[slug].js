@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 // functions
 import { client, urlFor } from '../../lib/client';
+import { useStateContext } from '../../context/StateContext';
 
 // dependencies
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
@@ -14,7 +15,13 @@ const ProductDetails = ({ product, products }) => {
   
    const { image, name, details, price } = product;
 
+   // sets hovered or clicked image as main on display
    const [index, setIndex] = useState(0);
+
+   // 
+   const { decQty, incQty, qty } = useStateContext();
+
+
 
    return (
     <div>
@@ -55,9 +62,9 @@ const ProductDetails = ({ product, products }) => {
             <div className='quantity'>
                <h3>Quantity:</h3>
                <p className='quantity-desc'>
-                  <span className='minus' onClick=""><AiOutlineMinus /></span>
-                  <span className='minus' onClick="">0</span>
-                  <span className='minus' onClick=""><AiOutlinePlus /></span>
+                  <span className='minus' onClick={decQty}><AiOutlineMinus /></span>
+                  <span className='minus' onClick="">{qty}</span>
+                  <span className='minus' onClick={incQty}><AiOutlinePlus /></span>
                </p>
             </div>
 
