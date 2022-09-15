@@ -15,7 +15,7 @@ export const StateContext = ({ children }) => {
    const [showCart, setShowCart] = useState(false);
    const [ cartItems, setCartItems] = useState([]);
    const [totalPrice, setTotalPrice] = useState();
-   const [totalQuantities, setTotalQuantities] = useState();
+   const [totalQuantities, setTotalQuantities] = useState(0);
    const [ qty, setQty] = useState(1);
 
 
@@ -76,7 +76,7 @@ export const StateContext = ({ children }) => {
       // not rendering anything, just wrapping all with context prov to pass state 
       <Context.Provider 
          value={{
-            showCart, cartItems, totalPrice, totalQuantities, qty,
+            showCart, cartItems, totalPrice, totalQuantities, qty, setShowCart,
             incQty, decQty, onAdd
       }}>
          { children }
