@@ -22,12 +22,14 @@ const Cart = () => {
 
       <div className="cart-container">
         
+        {/* cart title with button to go back */}
         <button type='button' className='cart-heading' onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
           <span className='heading'>Your Cart</span>
           <span className='cart-num-items'>{totalQuantities} items</span>
         </button>
 
+        {/* if cart is empty shows message to return to shopping */}
         {cartItems.length < 1 && (
           <div className='empty-cart'>
             <AiOutlineShopping size={150} />
@@ -38,6 +40,51 @@ const Cart = () => {
                 Continue Shopping
               </button>
             </Link>
+          </div>
+        )}
+
+        {/* all products inside the cart */}
+        <div className='product-container'>
+          {cartItems.length >= 1 && cartItems.map((item, index) => (
+            <div key={item._id} className='product'>
+              
+              <img src={urlFor(item?.image[0])} className="cart-product-image"/>
+
+              <div className='item-desc'>
+                <div className="flex top">
+                  <h5>{item.name}</h5>
+                  <h4>${item.price}</h4>
+                </div>
+                <div className='flex bottom'>
+                  <div>
+                    {/*  missing functions because they are defined for only 1 product */}
+                    <p className='quantity-desc'>
+                      <span className='minus' onClick=""><AiOutlineMinus /></span>
+                      <span className='num' onClick="">0</span>
+                      <span className='plus' onClick=""><AiOutlinePlus /></span>
+                    </p>
+                  </div>
+
+                  <button className='remove-item' onClick="" type='button'><TiDeleteOutline/></button>
+                </div>
+              </div>
+            
+            </div>
+          ))}
+        </div>
+
+        {/* subtotal price  */}
+        {cartItems.length >= 1 && (
+          <div className="cart-bottom">
+            <div className="total">
+              <h3>Subtotal:</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className="btn-container">
+              <button type='button' className='btn' onClick="">
+                Pay with Stripe!  
+              </button>
+            </div>
           </div>
         )}
 
