@@ -46,9 +46,9 @@ package-lock.json
 # https://www.youtube.com/watch?v=gm0gexHWDy0
 # y ya que estaba me instale el gpedit.msc
 #
+# $sanity start   en la carpeta jsmastery-ecommerce para correr sanity-backend
 #
-#
-#
+#  $npm run dev   en la carpeta js-mastery-ecommerce para correr react/next-foorntend
 #
 #
 #
