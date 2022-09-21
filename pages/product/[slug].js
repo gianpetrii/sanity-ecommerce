@@ -8,6 +8,7 @@ import { useStateContext } from '../../context/StateContext';
 // dependencies
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Product from '../../components/Product/Product';
+import { handleCheckout } from '../../lib/checkout';
 
 
 
@@ -19,7 +20,14 @@ const ProductDetails = ({ product, products }) => {
    const [index, setIndex] = useState(0);
 
    // 
-   const { decQty, incQty, qty, onAdd } = useStateContext();
+   const { decQty, incQty, qty, onAdd, cartItems, setShowCart } = useStateContext();
+
+   //
+   const handleBuyNow = () => {
+      onAdd(product, qty);
+      setShowCart(true);
+   };
+
 
 
 
@@ -35,7 +43,7 @@ const ProductDetails = ({ product, products }) => {
 
             <div className='small-images-container'>
                {image.map((item, i) => (
-                  <img src={urlFor(item)} className={i == index ? 
+                  <img src={urlFor(item)} key={i} className={i == index ? 
                      'small-image selected-image' : 'small-image'
                   } onMouseEnter={() => setIndex(i)} />
                ))}
@@ -70,7 +78,7 @@ const ProductDetails = ({ product, products }) => {
 
             <div className='buttons'>
                <button type='button' className='add-to-cart' onClick={() => onAdd(product, qty)}>Add to Cart</button>
-               <button type='button' className='buy-now' onClick="">Buy Now!</button>
+               <button type='button' className='buy-now' onClick={() => handleBuyNow()}>Buy Now!</button>
             </div>
 
          </div>
@@ -144,4 +152,4 @@ export const getStaticProps = async ({ params: {slug}}) => { // <params: {slug}>
 
 
 
-export default ProductDetails
+export default ProductDetails;
