@@ -113,6 +113,7 @@ const Cart = () => {
               <h3>${totalPrice}</h3>
             </div>
             <div className="btn-container">
+              <p>*To test payment repeat "424" for all the card info!*</p>
               <button type='button' className='btn' onClick={() => handleCheckout(cartItems)}>
                 Pay with Stripe!  
               </button>
